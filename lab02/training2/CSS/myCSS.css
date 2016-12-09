@@ -1,0 +1,43 @@
+
+
+tr {
+	
+	width: 500px;
+	height: 50px;
+
+}
+table {
+	align-items: center;
+}
+
+.trash {
+	
+	background: url('glyphicons-17-bin.png')no-repeat;
+	border: 0px;
+	padding-left: 15px;
+  	padding-bottom: 10px;
+
+  
+}
+
+
+.jumbotron {
+		
+	text-align: left;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+.table {
+	margin-top: 20px;
+	align-items: center;
+}
+.form-control {
+		margin-bottom: 5px;
+}
+
+.progress {
+	width: 600px;
+	border-width: 60; 
+}
