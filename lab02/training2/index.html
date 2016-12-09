@@ -1,48 +1,25 @@
 <!DOCTYPE html>
 
-<html ng-app="listaAtividades">
+<html ng-app>
 
-<head>
+<head >
 	<title>Lista de Atividades</title>
 	<link rel="stylesheet" type="text/css" href="CSS/myCSS.css">
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">	
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.js">
-	<script type="text/javascript" src="js/Controller.js"></script>
-	<script src="lib/angular/angular.js"></script>
-
-	<script>
-		angular.module("listaAtividades", []);
-		angular.module("listaAtividades").controller("listaAtividadesCtrl", function($scope){
-			$scope.app = "Lista de Atividades";
-			$scope.atividades = [
-				{nome: "Marcos", tarefa: "Cortar a grama", data: "12/12/2016"}
-
-			];
-
-			$scope.adicionarAtividade = function (atividade) {
-				$scope.atividades.push(angular.copy(atividade));
-				delete $scope.atividade;
-				
-			};
-
-		});
-
-
-
-	</script>
-
+	
 
 </head>
 	
-<body ng-controller="listaAtividadesCtrl">
+<body>
 
 	<span class="label label-primary">Em progresso</span>
 	<span class="label label-success">Feito</span>
 	<span class="label label-warning">A fazer</span>
 	<span class="label label-danger">Atrasado</span>
 
-	<div class="jumbotron">
-		<h3>{{app}}</h3>
+	<div class="jumbotron" ng-controller="controller">
+		<h3>Atividades</h3>
 		<table class="table table-striped">
 			<tr >
 
@@ -54,6 +31,8 @@
 				<td></td>
 
 			</tr>
+
+
 			<tr ng-repeat="atividade in atividades">
 				<td>{{atividade.nome}}</td>
 				<td>{{atividade.tarefa}}</td>
@@ -61,7 +40,7 @@
 				<td>{{atividade.status}}</td>
 				<td>
 					<form>
-						<INPUT TYPE="checkbox" NAME="OPCAO" VALUE="op1">
+						<input TYPE="checkbox" NAME="statusFeito" VALUE="op1">
 					</form>
 
 				</td>
@@ -73,11 +52,11 @@
 			</tr>
 		</table>
 		<hr/>
-		<input class="form-control" type="text" ng-model="atividade.nome" placeholder="Nome"/>
-		<input class="form-control" type="text" ng-model="atividade.tarefa" placeholder="Tarefa"/>
-		<input class="form-control" type="text" ng-model="atividade.data" placeholder="Data"/>
+		<input class="form-control" type="text" ng-model="nome" placeholder="Nome"/>
+		<input class="form-control" type="text" ng-model="tarefa" placeholder="Tarefa"/>
+		<input class="form-control" type="text" ng-model="data" placeholder="Data"/>
 		
-		<button class="btn btn-primary btn-block"  ng-click="adicionarAtividade(atividade)">Adicionar atividade</button>
+		<button class="btn btn-primary btn-block"  ng-click="adicionarAtividade()">Adicionar atividade</button>
 		{{atividade}}
 
 		<div  class="progress">
@@ -91,9 +70,12 @@
 </div>
 
 
+	<script src="lib/angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/Controller.js"></script>
 
 
 </body>
+
 
 
 </html>
