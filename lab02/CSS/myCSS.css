@@ -7,11 +7,12 @@ tr {
 
 }
 table {
-	align-items: center;
+	text-align: left;
+	
 }
 
 .trash {
-	
+		
 	background: url('glyphicons-17-bin.png')no-repeat;
 	border: 0px;
 	padding-left: 15px;
@@ -34,10 +35,27 @@ table {
 	align-items: center;
 }
 .form-control {
-		margin-bottom: 5px;
+
+	size: 800px;
+	align-self: center;
+	margin-bottom: 5px;
+	right: 400px;
 }
 
 .progress {
+
 	width: 600px;
-	border-width: 60; 
+	border-width: 60;
+}
+
+.selecionado {
+	background-color: green;
+}
+
+.negrito {
+	font-weight: bold;
+}
+
+.botoes {
+	align-content: center;
 }

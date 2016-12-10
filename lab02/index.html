@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html ng-app>
+
+<head >
+	<title>Lista de Atividades</title>
+	<link rel="stylesheet" type="text/css" href="CSS/myCSS.css">
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">	
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.js">
+
+	<meta http-equiv="Content-Type" content="text/html; charset-UTF-8" />
+</head>
+	
+<body>
+
+<!-- 	<span class="label label-primary">Em progresso</span>
+	<span class="label label-success">Feito</span>
+	<span class="label label-warning">A fazer</span>
+	<span class="label label-danger">Atrasado</span> -->
+	<div>
+		<ul class="nav nav-pills">
+	  	<li role="presentation" class="active"><a href="#">Inicio</a></li>
+	  	<li role="presentation"><a href="https://github.com/manoelf">Perfil GitHub</a></li>
+	  	<li role="presentation"><a href="#">Historico</a></li>
+	</ul>
+
+	</div>
+
+	<div class="jumbotron" ng-controller="controller">
+		<h2 align="center" style="font-family: italic">Atividades</h2>
+		<table class="table">
+			<tr >
+
+				<th>Nome</th>
+				<th>Tarefa</th>
+				<th>Data</th>
+				<th>Status</th>
+				<th></th>
+
+
+			</tr>
+
+
+			<tr ng-class="{selecionado: atividade.selecionado, negrito: atividade.selecionado}" ng-repeat="atividade in atividades">
+
+				<td>{{atividade.nome}}</td>
+				<td>{{atividade.tarefa}}</td>
+				<td>{{atividade.data}}</td>
+				<td>{{atividade.status}}</td>
+				<td><input type="checkbox" ng-model="atividade.selecionado"></td>
+				<td><input type="button" class="trash" ng-click="apagarTarefas(atividade)"/></td>
+
+
+			</tr>
+		</table>
+		
+		<div align="center">
+			<input class="form-control" type="text" ng-model="nome" placeholder="Nome"/>
+			<input class="form-control" type="text" ng-model="tarefa" placeholder="Tarefa"/>
+			<input class="form-control" type="text" ng-model="data" placeholder="Data"/>
+
+			
+			<button class="btn btn-primary btn-block"  ng-click="adicionarAtividade()">Adicionar atividade</button>
+			<button class="btn btn-danger btn-block"  ng-click="apagarTodasTarefas()">Apagar todas atividades</button>
+		</div>
+
+		Progresso de Conclusão das Atividades<div align="center" class="progress" style="align-self: center;" >
+			<div align="center" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{progressoConcluido(atividades)}}%;" align="center"> {{progressoConcluido(atividades)}}% 
+	  		</div>
+	  	</div>
+	</div>
+
+	
+
+</div>
+
+
+	<script src="lib/angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/Controller.js"></script>
+
+
+</body>
+
+
+
+</html>
