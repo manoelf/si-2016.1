@@ -1,4 +1,4 @@
-package br.com.si;
+package br.com.ufcg;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
