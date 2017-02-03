@@ -3,18 +3,20 @@ package br.com.ufcg.model;
 /**
  * Created by josemsf on 02/02/17.
  */
-public class Task {
+public abstract class Task {
 
     private long id;
-    private String name;
-    private String description;
+    protected String name;
+    protected String description;
+    protected boolean conclusion;
 
 
+    public boolean isConcluded() {
+        return conclusion;
+    }
 
-
-    public Task(String name, String description) {
-        this.name = name;
-        this.description = description;
+    public void setConclusion(boolean conclusion) {
+        this.conclusion = conclusion;
     }
 
     public String getName() {
@@ -34,4 +36,7 @@ public class Task {
         this.description = description;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 }
