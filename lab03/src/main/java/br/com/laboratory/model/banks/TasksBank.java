@@ -3,6 +3,8 @@ package br.com.laboratory.model.banks;
 import br.com.laboratory.model.tasks.RealTask;
 import com.sun.org.apache.regexp.internal.RE;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  */
 public class TasksBank {
 
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<RealTask> tasks;
 
     public TasksBank() {
