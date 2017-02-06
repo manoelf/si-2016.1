@@ -1,12 +1,12 @@
-package br.com.ufcg;
+package br.com.laboratory.run;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Lab03Application {
+public class LaboratoryApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Lab03Application.class, args);
+		SpringApplication.run(LaboratoryApplication.class, args);
 	}
 }
