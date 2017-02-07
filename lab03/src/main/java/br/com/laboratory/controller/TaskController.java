@@ -1,36 +1,42 @@
 package br.com.laboratory.controller;
 
-import br.com.laboratory.model.banks.TasksBank;
+import br.com.laboratory.model.banks.TaskBank;
 import br.com.laboratory.model.tasks.RealTask;
 import br.com.laboratory.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
 
 /**
  * Created by manoelferreira on 2/4/17.
  */
+@Controller
+@RequestMapping("/task")
 public class TaskController {
 
     @Autowired
     private TaskService taskService;
 
-    private TasksBank tasksBank;
-
-    public TaskController() {
-        this.tasksBank = new TasksBank();
+    @RequestMapping(value = "/taskList", method = RequestMethod.GET)
+    public String taskList(Model model) {
+        model.addAttribute("taskList", taskService.getAllTasks());
+        return "task/tasklist";
     }
 
-    public void addTask(RealTask task) {
-        this.tasksBank.addTask(task);
+    @RequestMapping(value = "/newTask", method = RequestMethod.GET)
+    public String newTask(Model model) {
+        return "task/taskform";
     }
 
-    public void removeTask(RealTask task) {
-        this.tasksBank.removeTask(task);
+
+    @RequestMapping(value = "/addTask", method = RequestMethod.POST)
+    public String addTask(@ModelAttribute RealTask task, Model model) {
+        taskService.addTask("root", task);
+        return "task/tasklist";
     }
 
-    public List<RealTask> getAllTask() {
-        List<RealTask> tasks = this.tasksBank.getAllTask();
-        return tasks;
-    }
 }

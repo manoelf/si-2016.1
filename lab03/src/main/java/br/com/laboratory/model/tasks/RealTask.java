@@ -1,7 +1,6 @@
 package br.com.laboratory.model.tasks;
 
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -9,11 +8,11 @@ import java.util.List;
 /**
  * Created by manoelferreira on 2/4/17.
  */
+@Entity
 public class RealTask extends Task{
 
     private Priority priority;
     private String category;
-    private Calendar time;
 
     @OneToMany(cascade = {CascadeType.ALL})
     private List<SubTask> subTasksBank;
@@ -26,6 +25,8 @@ public class RealTask extends Task{
         this.category =  category;
         this.subTasksBank = new ArrayList<>();
     }
+
+    public RealTask() {}
 
     public Priority getPriority() {
         return priority;
@@ -41,14 +42,6 @@ public class RealTask extends Task{
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public Calendar getTime() {
-        return time;
-    }
-
-    public void setTime(Calendar time) {
-        this.time = time;
     }
 
     public void addSubTask(SubTask subTask) {

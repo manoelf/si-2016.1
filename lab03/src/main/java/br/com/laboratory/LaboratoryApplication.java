@@ -1,4 +1,4 @@
-package br.com.laboratory.run;
+package br.com.laboratory;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

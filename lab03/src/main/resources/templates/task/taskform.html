@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{addTask}" method="post">
+        <input type="hidden" name="id"/>
+        <input type="text" placeholder="Name" name="name"/>
+        <textarea name="description">Description</textarea>
+
+        <select name="category">
+            <option value="None" selected="">Category</option>
+            <option value="Fun">Fun</option>
+            <option value="Health">Health</option>
+        </select>
+
+        <select name="priority">
+            <option value="None" selected="">Priority</option>
+            <option value="LOW">Low</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="HIGH">High</option>
+        </select>
+
+        <input type="submit" value="Submit"/>
+
+
+    </form>
+</body>
+</html>
