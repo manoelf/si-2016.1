@@ -31,9 +31,6 @@ public class TaskService {
         this.taskRepository.save(taskBank);
     }
 
-    public void removeTask(TaskBank task) {
-        this.taskRepository.delete(task);
-    }
 
     public void addTask(String bankName, RealTask task) {
         for (TaskBank taskBank: taskRepository.findAll()) {
@@ -43,6 +40,23 @@ public class TaskService {
             }
 
         }
+    }
+    public void deleteTask(String taskBank, String taskName) {
+        for (TaskBank bank: this.taskRepository.findAll()) {
+            if (bank.getName().equals(taskBank)) {
+                bank.removeTask(taskName);
+            }
+
+
+        }
+    }
+
+    public void addCategory(String category) {
+        this.categories.add(category);
+    }
+
+    public void removeCategory(String category) {
+        this.categories.remove(category);
     }
 
     public List<RealTask> getAllTasks() {
@@ -59,14 +73,6 @@ public class TaskService {
         return allTaskBanks;
     }
 
-    public void addCategory(String category) {
-        this.categories.add(category);
-    }
-
-    public void removeCategory(String category) {
-        this.categories.remove(category);
-    }
-
     public List<RealTask> getAllTaskOfCategory(String categorName) {
         List<RealTask> allTask = new ArrayList<>();
         for (RealTask task: getAllTasks()) {
@@ -80,5 +86,17 @@ public class TaskService {
     public Set<String> getAllCategory() {
         return this.categories;
     }
+
+    public List<RealTask> getAllDone() {
+        List<RealTask> allDone = new ArrayList<>();
+        for (RealTask task : getAllTasks()) {
+            if (task.isDone()) {
+                allDone.add(task);
+            }
+        }
+        return allDone;
+    }
+
+
 
 }

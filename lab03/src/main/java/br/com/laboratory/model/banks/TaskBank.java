@@ -67,4 +67,12 @@ public class TaskBank {
                 ", tasks=" + tasks +
                 '}';
     }
+
+    public void removeTask(String taskName) {
+        for (RealTask task: this.tasks) {
+            if (task.getName().equals(taskName)) {
+                this.tasks.remove(taskName);
+            }
+        }
+    }
 }
