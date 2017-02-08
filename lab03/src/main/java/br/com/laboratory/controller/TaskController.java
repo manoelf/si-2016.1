@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TaskController {
 
     @Autowired
-    private TaskService taskService;
+    private TaskService     taskService;
 
     @RequestMapping(value = "/newTask", method = RequestMethod.GET)
     public String newTask(Model model) {
@@ -88,5 +88,6 @@ public class TaskController {
         model.addAttribute("allCategories", taskService.getAllCategory());
         return "redirect:/task/categoryList";
     }
+
 
 }
