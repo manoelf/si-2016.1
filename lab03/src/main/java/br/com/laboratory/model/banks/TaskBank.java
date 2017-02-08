@@ -16,7 +16,7 @@ public class TaskBank {
     @Id
     @GeneratedValue(generator="STORE_SEQ")
     @SequenceGenerator(name="STORE_SEQ", sequenceName = "STORE_SEQ", allocationSize = 1)
-    protected long id;
+    private long id;
 
     private String name;
 
@@ -25,6 +25,9 @@ public class TaskBank {
 
     public TaskBank(String name) {
         this.name = name;
+    }
+
+    public TaskBank(){
         this.tasks = new ArrayList<>();
     }
 
@@ -42,5 +45,26 @@ public class TaskBank {
 
     public String getName() {
         return name;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "TaskBank{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", tasks=" + tasks +
+                '}';
     }
 }

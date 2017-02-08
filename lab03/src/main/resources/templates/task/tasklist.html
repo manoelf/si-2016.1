@@ -14,17 +14,17 @@
             <td>Description</td>
             <td>Category</td>
             <td>Priority</td>
+            <td>Done</td>
         </thead>
 
         <tbody>
             <tr th:each="task : ${taskList}">
-                <td th:text="task.id"></td>
-                <td th:text="task.name"></td>
-                <td th:text="task.description"></td>
-                <td th:text="task.done"></td>
-                <td th:text="task.category"></td>
-                <td th:text="task.priority"></td>
-
+                <td th:text="${task.id}"></td>
+                <td th:text="${task.name}"></td>
+                <td th:text="${task.description}"></td>
+                <td th:text="${task.category}"></td>
+                <td th:text="${task.priority}"></td>
+                <td th:text="${task.done}"></td>
 
             </tr>
 

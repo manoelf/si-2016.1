@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <h1>Category List</h1>
+    <table>
+        <thead>
+            <td>Name</td>
+        </thead>
+
+        <tbody>
+            <tr  th:each = "category : ${categoryList}">
+                <td th:text="${category}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

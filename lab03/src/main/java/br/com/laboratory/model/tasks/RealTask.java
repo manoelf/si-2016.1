@@ -20,10 +20,10 @@ public class RealTask extends Task{
     public RealTask(String name, String description, String category, Priority priority) {
         super.name = name;
         super.description = description;
-        super.done = false;
         this.priority = priority;
         this.category =  category;
         this.subTasksBank = new ArrayList<>();
+        super.done = false;
     }
 
     public RealTask() {}
