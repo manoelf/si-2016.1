@@ -27,7 +27,6 @@ public class TaskController {
     public String newTask(Model model) {
         model.addAttribute("allCategories", taskService.getAllCategory());
         model.addAttribute("bankNames", this.taskService.getAllTaskBank());
-        System.out.println(this.taskService.getAllTaskBank());
         return "task/taskform";
     }
 

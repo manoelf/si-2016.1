@@ -2,14 +2,13 @@ package br.com.laboratory.model.tasks;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
  * Created by manoelferreira on 2/4/17.
  */
 @Entity
-public class RealTask extends Task{
+public class RealTask extends Task implements Comparable<RealTask>{
 
     private Priority priority;
     private String category;
@@ -54,5 +53,10 @@ public class RealTask extends Task{
 
     public List<SubTask> getAllSubTask() {
         return this.subTasksBank;
+    }
+
+    @Override
+    public int compareTo(RealTask realTask) {
+        return this.name.compareTo(realTask.getName());
     }
 }

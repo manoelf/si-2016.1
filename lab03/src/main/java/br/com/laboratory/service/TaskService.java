@@ -1,6 +1,7 @@
 package br.com.laboratory.service;
 
 import br.com.laboratory.model.banks.TaskBank;
+import br.com.laboratory.model.tasks.CompareByPriority;
 import br.com.laboratory.model.tasks.RealTask;
 import br.com.laboratory.model.tasks.Task;
 import br.com.laboratory.repository.TaskRepository;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static java.util.Collections.sort;
 
 /**
  * Created by manoelferreira on 2/5/17.
@@ -97,6 +100,27 @@ public class TaskService {
         return allDone;
     }
 
+    public void sortByName() {
+        for (TaskBank taskBank: getAllTaskBank()) {
+            sort(taskBank.getAllTask());
+        }
+    }
 
+    public void sortByPriority() {
+        for (TaskBank taskBank: getAllTaskBank()) {
+            taskBank.getAllTask().sort(new CompareByPriority());
+        }
+    }
 
+    public List<RealTask> showAllTaskSortedByName() {
+        List<RealTask> sorted = getAllTasks();
+        sort(sorted);
+        return sorted;
+    }
+
+    public List<RealTask> showAllTaskSortedByPriority() {
+        List<RealTask> sorted = getAllTasks();
+        sorted.sort(new CompareByPriority());
+        return sorted;
+    }
 }

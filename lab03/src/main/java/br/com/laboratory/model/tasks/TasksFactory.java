@@ -6,7 +6,7 @@ package br.com.laboratory.model.tasks;
 public class TasksFactory {
 
     public SubTask createSubTask(String name, String description) {
-        return new SubTask(name, description);
+        return new SubTask(name);
     }
 
     public RealTask createRealtask(String name, String description, String category, Priority priority) {

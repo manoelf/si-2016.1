@@ -8,10 +8,10 @@ import javax.persistence.Entity;
 @Entity
 public class SubTask extends Task {
 
-    public SubTask(String name, String description) {
+    public SubTask(String name) {
         super.name = name;
-        super.description = description;
         super.done = false;
     }
 
+    public SubTask() {}
 }

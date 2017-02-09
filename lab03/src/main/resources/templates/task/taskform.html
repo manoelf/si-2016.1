@@ -28,6 +28,7 @@
             <option value="HIGH">High</option>
         </select>
 
+        <input type="text" name="subtask" th:each="index : ${#numbers.sequence(1,2)}"/>
         <input type="submit" value="Submit"/>
 
 
