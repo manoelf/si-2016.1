@@ -21,11 +21,11 @@ public class RealTask extends Task implements Comparable<RealTask>{
         super.description = description;
         this.priority = priority;
         this.category =  category;
-        this.subTasksBank = new ArrayList<>();
+
         super.done = false;
     }
 
-    public RealTask() {}
+    public RealTask() {this.subTasksBank = new ArrayList<>();}
 
     public Priority getPriority() {
         return priority;
@@ -58,5 +58,16 @@ public class RealTask extends Task implements Comparable<RealTask>{
     @Override
     public int compareTo(RealTask realTask) {
         return this.name.compareTo(realTask.getName());
+    }
+
+    @Override
+    public String toString() {
+        return "RealTask{" +
+                ", name=" + super.name +
+                ", description=" + super.description +
+                ", priority=" + priority +
+                ", category='" + category + '\'' +
+                ", subTasksBank=" + subTasksBank +
+                '}';
     }
 }

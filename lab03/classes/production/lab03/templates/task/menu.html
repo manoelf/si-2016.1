@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+ <head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+
+    <div th:fragment="menu">
+        <h1>Menu</h1>
+
+        <p>Please select an option</p>
+        <ol>
+            <li><a href="task/taskform.html" th:href="@{/task/newTask}">Task Form</a></li>
+            <li><a href="task/categoryform.html" th:href="@{/task/newCategory}">Category Form</a></li>
+            <li><a href="task/taskbankform.html" th:href="@{/task/newTaskBank}">Task Bank Form</a></li>
+        </ol>
+    </div>
+
+</body>
+</html>

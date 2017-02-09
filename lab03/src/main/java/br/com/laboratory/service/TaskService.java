@@ -28,6 +28,10 @@ public class TaskService {
 
     public TaskService() {
         this.categories = new HashSet<>();
+        this.categories.add("Nome");
+        this.categories.add("Work");
+        this.categories.add("Study");
+        this.categories.add("Fun");
     }
 
     public void addTaskBank(TaskBank taskBank) {

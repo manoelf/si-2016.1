@@ -2,6 +2,7 @@ package br.com.laboratory.controller;
 
 import br.com.laboratory.model.banks.TaskBank;
 import br.com.laboratory.model.tasks.RealTask;
+import br.com.laboratory.model.tasks.SubTask;
 import br.com.laboratory.model.tasks.Task;
 import br.com.laboratory.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,11 @@ public class TaskController {
 
 
     @RequestMapping(value = "/addTask", method = RequestMethod.POST)
-    public String addTask(@ModelAttribute RealTask task, Model model) {
-        taskService.addTask("root", task);
+    public String addTask(@ModelAttribute RealTask task, String subTaskList, String bankName, Model model) {
+        for (String subTaskName: subTaskList.split(",")) {
+            task.addSubTask(new SubTask(subTaskName));
+        }
+        this.taskService.addTask(bankName, task);
         model.addAttribute(task);
         return "redirect:/task/taskList";
     }
@@ -41,6 +45,7 @@ public class TaskController {
 
     @RequestMapping(value = "/taskList", method = RequestMethod.GET)
     public String taskList(Model model) {
+        System.out.println(taskService.getAllTasks().size());
         model.addAttribute("taskList", taskService.getAllTasks());
         return "task/tasklist";
     }
@@ -83,9 +88,20 @@ public class TaskController {
 
     @RequestMapping(value = "getCategories", method = RequestMethod.POST)
     public String getCategories(Model model) {
-        System.out.println(taskService.getAllCategory());
         model.addAttribute("allCategories", taskService.getAllCategory());
         return "redirect:/task/categoryList";
+    }
+
+    @RequestMapping(value = "showCategories", method = RequestMethod.POST)
+    public String filterByCategoryForm(Model model) {
+        model.addAttribute("allCategories", taskService.getAllCategory());
+        return "task/filtercategoryform";
+    }
+
+    @RequestMapping(value = "byCategories", method = RequestMethod.GET)
+    public String filterByCategory(Model model) {
+        model.addAttribute("allCategories", taskService.getAllCategory());
+        return "task/allbycategory";
     }
 
 
