@@ -16,24 +16,32 @@
             <td>Category</td>
             <td>Priority</td>
             <td>Done</td>
-            <td>SubTasks</td>
+
         </thead>
 
         <tbody>
-            <tr th:each="task : ${taskList}">
-                <td th:text="${task.id}"></td>
-                <td th:text="${task.name}"></td>
-                <td th:text="${task.description}"></td>
-                <td th:text="${task.category}"></td>
-                <td th:text="${task.priority}"></td>
-                <td th:text="${task.done}"></td>
-                <td th:each="subTask : allSubtask" th:text="${subTask}"></td>
+            <form th:action="@{check}" method="post">
+                <tr th:each="task : ${taskList}">
+                    <td th:text="${task.id}"></td>
+                    <td th:text="${task.name}"></td>
+                    <td th:text="${task.description}"></td>
+                    <td th:text="${task.category}"></td>
+                    <td th:text="${task.priority}"></td>
+                    <td> <input type="checkbox" name="isDone"/></td>
+                    <td><input type="submit" value="Submit"/></td>
+
+                    <tr th:each="subTask : ${task.subTasksBank}" >
+                        <td th:text="${subTask.name}" align="center"></td>
+                        <td th:text="${subTask.done}"></td>
+                        <td><input type="checkbox" name="alltaskdone"/></td>
+
+                    </tr>
+                        <td><input type="submit" name="${task}" value="OK"/></td>
 
 
+                </tr>
 
-            </tr>
-
-
+            </form>
 
         </tbody>
 

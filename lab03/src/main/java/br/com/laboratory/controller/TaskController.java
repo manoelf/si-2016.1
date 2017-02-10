@@ -34,13 +34,22 @@ public class TaskController {
         return "task/taskform";
     }
 
+    @RequestMapping(value = "/check", method = RequestMethod.POST)
+    public String check(boolean isDone, String alltaskdone, RealTask task, Model model) {
+        System.out.println(isDone);
+        System.out.println(alltaskdone);
+        System.out.println(task);
+        return "task/taskform";
+    }
+
+    private List<SubTask> subTasks = new ArrayList<>();
 
     @RequestMapping(value = "/addTask", method = RequestMethod.POST)
     public String addTask(@ModelAttribute RealTask task, String subTaskList, String bankName, Model model) {
         for (String subTaskName: subTaskList.split(",")) {
             task.addSubTask(new SubTask(subTaskName));
         }
-
+        subTasks.addAll(task.getAllSubTask());
         this.taskService.addTask(bankName, task);
         model.addAttribute(task);
         model.addAttribute("allSubtask", task.getAllSubTask());
@@ -51,6 +60,8 @@ public class TaskController {
     @RequestMapping(value = "/taskList", method = RequestMethod.GET)
     public String taskList(Model model) {
         model.addAttribute("taskList", taskService.getAllTasks());
+        model.addAttribute("allSubtask", subTasks);
+
         return "task/tasklist";
     }
 

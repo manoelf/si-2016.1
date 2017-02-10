@@ -24,7 +24,13 @@ public class RealTask extends Task implements Comparable<RealTask>{
 
         super.done = false;
     }
+    public List<SubTask> getSubTasksBank() {
+        return this.subTasksBank;
+    }
 
+    public void setSubTasksBank(List<SubTask> subTasksBank) {
+        this.subTasksBank = subTasksBank;
+    }
     public RealTask() {this.subTasksBank = new ArrayList<>();}
 
     public Priority getPriority() {

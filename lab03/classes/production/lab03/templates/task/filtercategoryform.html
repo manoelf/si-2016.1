@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <th:block th:include="/task/menu :: menu"></th:block>
+
+</head>
+<body>
+    <h2>Select a Category</h2>
+    <form th:action="@{byCategories}" method="post">
+        <select th:action="@{getCategories}" name="category">
+            <option value="None" selected="">Category</option>
+            <option th:each="item : ${allCategories}" th:text="${item}"></option>
+        </select>
+        <input type="submit" value="Submit"/>
+    </form>
+</body>
+</html>
