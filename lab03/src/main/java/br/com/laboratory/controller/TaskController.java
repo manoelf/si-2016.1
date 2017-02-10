@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by manoelferreira on 2/4/17.
@@ -37,15 +40,16 @@ public class TaskController {
         for (String subTaskName: subTaskList.split(",")) {
             task.addSubTask(new SubTask(subTaskName));
         }
+
         this.taskService.addTask(bankName, task);
         model.addAttribute(task);
+        model.addAttribute("allSubtask", task.getAllSubTask());
         return "redirect:/task/taskList";
     }
 
 
     @RequestMapping(value = "/taskList", method = RequestMethod.GET)
     public String taskList(Model model) {
-        System.out.println(taskService.getAllTasks().size());
         model.addAttribute("taskList", taskService.getAllTasks());
         return "task/tasklist";
     }
@@ -75,7 +79,6 @@ public class TaskController {
 
     @RequestMapping(value = "addCategory", method = RequestMethod.POST)
     public String addCategoryForm(String category, Model model) {
-        System.out.println(category);
         taskService.addCategory(category);
         return "redirect:/task/categoryList";
     }
@@ -92,17 +95,43 @@ public class TaskController {
         return "redirect:/task/categoryList";
     }
 
-    @RequestMapping(value = "showCategories", method = RequestMethod.POST)
+    private List<RealTask> tasksTemp;// = new ArrayList<>();
+
+    @RequestMapping(value = "/categories", method = RequestMethod.GET)
     public String filterByCategoryForm(Model model) {
         model.addAttribute("allCategories", taskService.getAllCategory());
         return "task/filtercategoryform";
     }
 
-    @RequestMapping(value = "byCategories", method = RequestMethod.GET)
-    public String filterByCategory(Model model) {
-        model.addAttribute("allCategories", taskService.getAllCategory());
+    @RequestMapping(value = "byCategories", method = RequestMethod.POST)
+    public String filterByCategory(String category, Model model) {
+        tasksTemp =  taskService.getAllTaskOfCategory(category);
+        return "redirect:/task/temp";
+    }
+
+    @RequestMapping(value = "/temp", method = RequestMethod.GET)
+    public String temp(Model model) {
+        model.addAttribute("allCategories", tasksTemp);
         return "task/allbycategory";
     }
+
+    @RequestMapping(value = "/priorities", method = RequestMethod.GET)
+    public String filterByPriorityForm(Model model) {
+        return "task/allbypriorityform";
+    }
+
+    @RequestMapping(value = "/byPriorities", method = RequestMethod.POST)
+    public String filterByPriority(String priority, Model model) {
+        tasksTemp =  taskService.getAllTaskOfPriority(priority);
+        return "redirect:/task/prioritySelected";
+    }
+
+    @RequestMapping(value = "/prioritySelected", method = RequestMethod.GET)
+    public String showPrioritiesSelected(Model model) {
+        model.addAttribute("allPriorities", tasksTemp);
+        return "task/allbypriorities";
+    }
+
 
 
 }

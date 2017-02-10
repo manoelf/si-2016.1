@@ -15,7 +15,7 @@ public abstract class Task {
     @GeneratedValue(generator="STORE_SEQ")
     @SequenceGenerator(name="STORE_SEQ", sequenceName = "STORE_SEQ", allocationSize = 1)
     protected long id;
-    protected String name;
+    public String name;
     protected String description;
     protected boolean done;
 

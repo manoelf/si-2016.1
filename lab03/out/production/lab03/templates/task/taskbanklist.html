@@ -7,16 +7,22 @@
 
 </head>
 <body>
+    <h1>Task Banks</h1>
+
     <table>
         <thead>
-        <td>Name</td>
+            <!--<td>Id</td>-->
+            <td>Name</td>
         </thead>
 
         <tbody>
-        <tr  th:each = "task : ${allCategories}">
-            <td th:text="${task.name}"></td>
-        </tr>
+            <tr th:each = "bank : ${taskBankList}">
+                <td th:text="${bank.name}"></td>
+
+            </tr>
+
         </tbody>
+
     </table>
 
 </body>

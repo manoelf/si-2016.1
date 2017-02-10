@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Adding a task bank</title>
+    <th:block th:include="/task/menu :: menu"></th:block>
+
+</head>
+<body>
+    <form th:action="@{addTaskBank}" method="post">
+        <input type="text" placeholder="Name" name="name"/>
+        <input type="submit" value="Submit"/>
+    </form>
+
+
+</body>
+</html>

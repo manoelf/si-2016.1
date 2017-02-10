@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
-    <th:block th:include="/task/menu :: menu"></th:block>
-
 </head>
 <body>
+
     <table>
         <thead>
         <td>Name</td>
         </thead>
 
         <tbody>
-        <tr  th:each = "task : ${allCategories}">
+        <tr  th:each = "task : ${allPriorities}">
             <td th:text="${task.name}"></td>
         </tr>
         </tbody>

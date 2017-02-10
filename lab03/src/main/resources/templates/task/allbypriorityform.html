@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <th:block th:include="/task/menu :: menu"></th:block>
+</head>
+<body>
+    <h2>Select a Priority</h2>
+
+    <form th:action="@{byPriorities}" method="post">
+        <select name="priority">
+            <option value="None" selected="">Priority</option>
+            <option value="LOW">Low</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="HIGH">High</option>
+        </select>
+        <input type="submit" value="Submit"/>
+    </form>
+</body>
+</html>

@@ -8,10 +8,20 @@ import javax.persistence.Entity;
 @Entity
 public class SubTask extends Task {
 
+    private String name;
+
     public SubTask(String name) {
-        super.name = name;
+       this.name = name;
         super.done = false;
     }
 
     public SubTask() {}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

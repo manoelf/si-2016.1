@@ -32,6 +32,7 @@ public class TaskService {
         this.categories.add("Work");
         this.categories.add("Study");
         this.categories.add("Fun");
+        //this.taskRepository.save(new TaskBank("root"));
     }
 
     public void addTaskBank(TaskBank taskBank) {
@@ -126,5 +127,25 @@ public class TaskService {
         List<RealTask> sorted = getAllTasks();
         sorted.sort(new CompareByPriority());
         return sorted;
+    }
+
+    public List<RealTask> getTestkByCategory(String category) {
+        List<RealTask> allTask = new ArrayList<>();
+        for (RealTask task: getAllTasks()) {
+            if (task.getCategory().equals(category)) {
+                allTask.add(task);
+            }
+        }
+        return allTask;
+    }
+
+    public List<RealTask> getAllTaskOfPriority(String priority) {
+        List<RealTask> allTask = new ArrayList<>();
+        for (RealTask task: getAllTasks()) {
+            if (task.getPriority().toString().equals(priority)) {
+                allTask.add(task);
+            }
+        }
+        return allTask;
     }
 }

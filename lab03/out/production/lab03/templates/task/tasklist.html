@@ -16,7 +16,6 @@
             <td>Category</td>
             <td>Priority</td>
             <td>Done</td>
-            <td>SubTasks</td>
         </thead>
 
         <tbody>
@@ -27,8 +26,8 @@
                 <td th:text="${task.category}"></td>
                 <td th:text="${task.priority}"></td>
                 <td th:text="${task.done}"></td>
-                <td th:each="subTask : allSubtask" th:text="${subTask}"></td>
-
+                <td th:each="subTask : allSubtask" th:text="${subTask.name}"></td>
+                
 
 
             </tr>
