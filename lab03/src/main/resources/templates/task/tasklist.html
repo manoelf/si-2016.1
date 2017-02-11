@@ -32,7 +32,6 @@
 
                     <tr th:each="subTask : ${task.subTasksBank}" >
                         <td th:text="${subTask.name}" align="center"></td>
-                        <td th:text="${subTask.done}"></td>
                         <td><input type="checkbox" name="alltaskdone"/></td>
 
                     </tr>

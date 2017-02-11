@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.management.modelmbean.ModelMBeanOperationInfo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import java.util.List;
 public class TaskController {
 
     @Autowired
-    private TaskService     taskService;
+    private TaskService taskService;
 
     @RequestMapping(value = "/newTask", method = RequestMethod.GET)
     public String newTask(Model model) {
@@ -36,9 +37,6 @@ public class TaskController {
 
     @RequestMapping(value = "/check", method = RequestMethod.POST)
     public String check(boolean isDone, String alltaskdone, RealTask task, Model model) {
-        System.out.println(isDone);
-        System.out.println(alltaskdone);
-        System.out.println(task);
         return "task/taskform";
     }
 
@@ -117,11 +115,11 @@ public class TaskController {
     @RequestMapping(value = "byCategories", method = RequestMethod.POST)
     public String filterByCategory(String category, Model model) {
         tasksTemp =  taskService.getAllTaskOfCategory(category);
-        return "redirect:/task/temp";
+        return "redirect:/task/showCategories";
     }
 
-    @RequestMapping(value = "/temp", method = RequestMethod.GET)
-    public String temp(Model model) {
+    @RequestMapping(value = "/showCategories", method = RequestMethod.GET)
+    public String showCategories(Model model) {
         model.addAttribute("allCategories", tasksTemp);
         return "task/allbycategory";
     }
@@ -143,6 +141,17 @@ public class TaskController {
         return "task/allbypriorities";
     }
 
+    @RequestMapping(value = "/sortedByName", method = RequestMethod.GET)
+    public String sortedByName(Model model) {
+        model.addAttribute("taskList", this.taskService.showAllTaskSortedByName());
+        return "task/tasklist";
+    }
+
+    @RequestMapping(value = "/sortedByPriority", method = RequestMethod.GET)
+    public String sortedByPriority(Model model) {
+        model.addAttribute("taskList", this.taskService.showAllTaskSortedByPriority());
+        return "task/tasklist";
+    }
 
 
 }
